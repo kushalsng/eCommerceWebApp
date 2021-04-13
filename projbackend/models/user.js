@@ -54,14 +54,12 @@ userSchema.virtual('password')
 });
 
 
-userSchema.method = {
+userSchema.methods = {
     authenticate: function(plainPassword){
         return this.encryptPassword(plainPassword) === this.enc_password;
     },
     encryptPassword: function(plainPassword){
-        //TODO: 'password' variable is doubtful. i feel it should be
-        // 'plainPassword'.
-        if(!password) return "";
+        if(!plainPassword) return "";
         try {
             return crypto.createHmac('sha256', this.salt)
             //the 'this' keyword will refer to userSchema as we are 

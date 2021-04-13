@@ -10,6 +10,26 @@ app.get("/login", (req, res) => {
     return res.send("This will be the login page");
 });
 
+const admin = (req, res) => {
+    return res.send("THis is admin")
+}
+
+const isAdmin = (req, res, next) => {
+    console.log("YEs it is admin!");
+    next();
+}
+
+const isloggedIn = (req, res, next) => {
+    console.log("YEs I am logged in");
+    next();
+}
+
+const isAPerson = (req, res) => {
+    console.log("Yes I am a human not a robot");
+}
+
+app.get("/admin", isAdmin, isloggedIn, isAPerson, admin);
+
 app.get("/signup", (req, res) => {
     return res.send("This will be the signup page");
 });

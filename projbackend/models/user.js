@@ -1,6 +1,9 @@
-import mongoose from "mongoose";
-import crypto from "crypto";
-import uuidv1 from "uuid/v1";
+// import mongoose from "mongoose";
+const mongoose = require("mongoose")
+// import crypto from "crypto";
+const crypto = require("crypto")
+// import uuidv1 from "uuid/v1";
+const uuidv1 = require("uuid/v1")
 
 const userSchema = new mongoose.Schema({
     name: {
@@ -11,7 +14,6 @@ const userSchema = new mongoose.Schema({
     },
     lastname: {
         type: String,
-        required: false,
         maxlength: 32,
         trim: true
     },
@@ -30,7 +32,7 @@ const userSchema = new mongoose.Schema({
         required: true
     },
     salt: String,
-    role: {
+    role: { //0 for user. 1 for admin
         type: Number,
         default: 0
     },
